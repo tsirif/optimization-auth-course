@@ -1,0 +1,19 @@
+# main links
+main:
+  - title: "About"
+    url: /about/
+  - title: "Weekly Assignments"
+    url: /assignments/info
+
+assignments:
+  - title: Information
+    url: /assignements/info
+  - title: Lecture 1
+    children:
+      - title: Staircase
+        url: /assignments/staircase
+      - title: Minimize-1
+        url: /assignments/minimize-1
+  - title: Lecture 2
+    children:
+      - title:
