@@ -22,7 +22,7 @@ to be minimized $$(x_1 - 3)^2 + (x_2 - 2)^2$$ and its (unconstrained) minimum at
 $$(3, 2)$$. In addition, the *feasible region* of the constrained problem is filled
 with **orange** color.
 
-![Problem image](/assets/images/02-minimize-1.png "Contours and boundaries"){: .align-center} 
+![Problem image]({{ "/assets/images/02-minimize-1.png" | absolute_url}} "Contours and boundaries"){: .align-center} 
 
 As it can be seen, the (unconstrained) objective function is minimized outside the
 feasible region of the constrained problem. This means, as also this graph suggests,

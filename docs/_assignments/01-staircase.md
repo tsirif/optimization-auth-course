@@ -5,7 +5,7 @@ excerpt: "Find a stair of minimum length subject to a constrain."
 date: 2017-04-23
 ---
 
-![Problem image](/assets/images/01-staircase.png "Staircase above a block."){: .align-left} 
+![Problem image]({{ "/assets/images/01-staircase.png" | absolute_url}} "Staircase above a block."){: .align-left} 
 Find the stair of minimum length which can be supported by the floor and the wall with
 respect to an orthogonal block with dimensions *axb*.
 
