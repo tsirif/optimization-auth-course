@@ -233,7 +233,7 @@ compress_html:
 
 # Collections
 collections:
-  exercises:
+  assignments:
     output: True
     permalink: /:collection/:path/
 
@@ -256,5 +256,7 @@ defaults:
       author_profile: false
       share: false
       comments: false
+      # mathjax_local: true
+      mathjax: true
       sidebar:
         nav: "assignments"

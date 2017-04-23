@@ -1,5 +1,28 @@
 <!-- start custom head snippets -->
 
+<!-- custom scripts for mathjax support -->
+{% if page.mathjax %}
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML">
+</script>
+{% endif %}
+
+{% if page.mathjax_local %}
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/javascript" async
+  src="{{ '/assets/js/mathjax/MathJax.js?config=TeX-AMS_HTML' | absolute_url }}">
+</script>
+{% endif %}
+
 <!-- insert favicons. use http://realfavicongenerator.net/ -->
 
 <!-- end custom head snippets -->
