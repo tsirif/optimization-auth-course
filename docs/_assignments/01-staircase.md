@@ -53,7 +53,7 @@ Equality is taken when stair "leans" upon the orthogonal block.
 
 Minimizing the objective function $$f_1$$ would need to find the roots of a 3rd-degree
 polynomial. So instead we are going to keep the constrain and solve this minimization
-problem using Lagrange multipliers by noting that the minimum of the constrained problem
+problem using **Lagrange multipliers** by noting that the minimum of the constrained problem
 is achieved on the boundary of the feasible region, as suggested by inequality $$(3)$$.
 The equivalent problem becomes:  
 
