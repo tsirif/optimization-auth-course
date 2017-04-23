@@ -11,7 +11,7 @@ of Aristotle University of Thessaloniki. Code existing in the corresponding
 Tsirigotis and solutions to assignments for the needs of this course. Supervisor
 is Dr. Charalambos Bechlioulis.
 
-[Weekly Assignments]({{ "/assignments/info/" | absolute_url }}){: .btn .btn--info .btn--large}
+[Weekly Assignments]({{ "/assignments/info" | absolute_url }}){: .btn .btn--info .btn--large}
 
 [ece-auth]: http://ee.auth.gr/
 [repo]: https://github.com/tsirif/optimization-auth-course
