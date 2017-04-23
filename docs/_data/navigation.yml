@@ -6,14 +6,11 @@ main:
     url: /assignments/info
 
 assignments:
-  - title: Information
-    url: /assignements/info
-  - title: Lecture 1
+  - title: "Information"
+    url: /assignments/info
+  - title: "Lecture 1"
     children:
-      - title: Staircase
+      - title: "Staircase"
         url: /assignments/staircase
-      - title: Minimize-1
+      - title: "Minimize-1"
         url: /assignments/minimize-1
-  - title: Lecture 2
-    children:
-      - title:
