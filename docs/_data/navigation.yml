@@ -20,3 +20,7 @@ assignments:
         url: /assignments/petroleum
       - title: "Knight's Tour"
         url: /assignments/knight-tour
+  - title: "Lecture 3"
+    children:
+      - title: "Shortest Path"
+        url: /assignments/shortest-path
