@@ -24,3 +24,5 @@ assignments:
     children:
       - title: "Shortest Path"
         url: /assignments/shortest-path
+      - title: "Travelling Salesman"
+        url: /assignments/travelling
