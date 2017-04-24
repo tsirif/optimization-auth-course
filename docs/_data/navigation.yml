@@ -14,3 +14,9 @@ assignments:
         url: /assignments/staircase
       - title: "Minimize-1"
         url: /assignments/minimize-1
+  - title: "Lecture 2"
+    children:
+      - title: "Petroleum"
+        url: /assignments/petroleum
+      - title: "Knight's Tour"
+        url: /assignments/knight-tour

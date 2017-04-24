@@ -42,5 +42,5 @@ the first contour touching the boundary corresponds to value of $$2$$. This is t
 minimum value of the constrained problem and it happens at the point $$(2, 1)$$, as
 it can be seen from the graph.
 
-[script]: https://github.com/tsirif/optimization-auth-course/blob/master/src/02-minimize-1.py 
+[script]: https://github.com/tsirif/optimization-auth-course/blob/master/src/minimize_1_02.py 
 [KKT]: https://en.wikipedia.org/wiki/Karush%E2%80%93Kuhn%E2%80%93Tucker_conditions
