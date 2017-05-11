@@ -1,5 +1,5 @@
 ---
-title: "Minimize petroleum transportation cost"
+title: "Minimize petroleum transportation cost: Linear Programming"
 permalink: /assignments/petroleum
 excerpt: "Solve a linear program."
 date: 2017-04-23
@@ -33,7 +33,7 @@ $$\begin{align*}
       \text{s.t.} \quad& u_1 + u_2 \leq 16 \\
                        & u_2 + u_3 \leq 7 \\
                        & u_3 + u_4 \leq 14 \\
-                       & u_4 + x_1 \leq 8 \\
+                       & u_4 + u_1 \leq 8 \\
                        & u_i \geq 0 \quad \forall i \in \{1,2,3,4\}
 \end{align*}$$
 

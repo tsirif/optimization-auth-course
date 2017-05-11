@@ -1,5 +1,5 @@
 ---
-title: "Minimum length staircase"
+title: "Minimum length staircase: Constrained optimization"
 permalink: /assignments/staircase
 excerpt: "Find a stair of minimum length subject to a constrain."
 date: 2017-04-23
