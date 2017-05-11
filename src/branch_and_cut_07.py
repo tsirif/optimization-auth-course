@@ -64,8 +64,6 @@ nodes_opened = 0
 while subproblems:
     A_parent, b_parent = subproblems.popleft()
     nodes_opened += 1
-    #  if nodes_opened % 5 == 0:
-    #      print(nodes_opened)
 
     # Solve relaxed subproblem
     res = simplex(-profit, A_parent, b_parent)
@@ -112,7 +110,6 @@ while subproblems:
     b_child_2 = np.concatenate([b_parent, np.array([[-up]])])
     subproblems.append((A_child_2, b_child_2))
 
-print()
 print("Solution:")
 print(best_solution)
 print("Optimal value:", end=' ')
