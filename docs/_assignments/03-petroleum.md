@@ -33,7 +33,7 @@ $$\begin{align*}
       \text{s.t.} \quad& u_1 + u_2 \leq 16 \\
                        & u_2 + u_3 \leq 7 \\
                        & u_3 + u_4 \leq 14 \\
-                       & u_4 + x_1 \leq 8 \\
+                       & u_4 + u_1 \leq 8 \\
                        & u_i \geq 0 \quad \forall i \in \{1,2,3,4\}
 \end{align*}$$
 
