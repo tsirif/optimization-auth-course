@@ -68,11 +68,11 @@ implemented in [this][script] Python script. Please find the description of this
 algorithm in its comments.
 
 The solution, found by this script, is presented in the table below. The optimal value
-for this solution is **8928** and it has solved for 9 LP relaxation subproblems, using the
+for this solution is **8928** and it has solved for 9 LP relaxation sub-problems, using the
 **simplex** algorithm, until it found the maximum.
 
 | ---
-|**#Flights** | A | B | C | **#Passengers##** | A | B | C
+|**#Flights** | A | B | C | **#Passengers** | A | B | C
 | -: | :-: | :-: | :-: | -: | :-: | :-: | :-:
 | **001** | 45 | 29 | -  | **001** | 900 | 435 | -
 | **002** | 0 | 0 | 17 | **002** | 0 | 0 | 170
