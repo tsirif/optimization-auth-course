@@ -1,5 +1,5 @@
 ---
-title: "Constrained minimization: graphical solution" 
+title: "Constrained minimization: Graphical solution" 
 permalink: /assignments/minimize-1
 excerpt: "Find graphically the solution to this minimization problem."
 date: 2017-04-23

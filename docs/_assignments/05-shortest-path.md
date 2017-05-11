@@ -1,5 +1,5 @@
 ---
-title: "Shortest Path Problem"
+title: "Shortest Path Problem: Dijkstra"
 permalink: /assignments/shortest-path
 excerpt: "Find shortest paths between vertices of a directed graph."
 date: 2017-04-23

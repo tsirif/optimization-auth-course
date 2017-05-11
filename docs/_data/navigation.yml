@@ -10,19 +10,23 @@ assignments:
     url: /assignments/info
   - title: "Lecture 1"
     children:
-      - title: "Staircase"
+      - title: "Minimum Stair Length"
         url: /assignments/staircase
       - title: "Minimize-1"
         url: /assignments/minimize-1
   - title: "Lecture 2"
     children:
-      - title: "Petroleum"
+      - title: "Petroleum Transport: Linear Programming"
         url: /assignments/petroleum
       - title: "Knight's Tour"
         url: /assignments/knight-tour
   - title: "Lecture 3"
     children:
-      - title: "Shortest Path"
+      - title: "Shortest Path: Dijkstra"
         url: /assignments/shortest-path
       - title: "Travelling Salesman"
         url: /assignments/travelling
+  - title: "Lecture 4"
+    children:
+      - title: "Airplane Manager: Integer Programming"
+        url: /assignments/airplanes

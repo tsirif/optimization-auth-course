@@ -1,5 +1,5 @@
 ---
-title: "Minimize petroleum transportation cost"
+title: "Minimize petroleum transportation cost: Linear Programming"
 permalink: /assignments/petroleum
 excerpt: "Solve a linear program."
 date: 2017-04-23
