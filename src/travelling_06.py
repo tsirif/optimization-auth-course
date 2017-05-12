@@ -21,12 +21,12 @@ def solve():
         if not seqs:
             break
         new_seqs = []
-        for seq, running_cost in seqs:  # * O(N**i)
+        for seq, running_cost in seqs:  # * O(1*(N-1)*...*(N-i+1))
             for vertex, cost in graph[seq[-1]]:  # * O(N)
                 if i == 5 and vertex == seq[0]:
                     new_seqs.append((list(seq), running_cost + cost))
                     break
-                if vertex in seq:  # * O(N)
+                if vertex in seq:  # * O(i)
                     # cannot go there, already have been
                     continue
                 new_seqs.append((list(seq) + [vertex], running_cost + cost))

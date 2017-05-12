@@ -63,7 +63,7 @@ graph[14] = [5, 7, 8]
 graph[15] = [6, 9]
 ```
 
-The *naive* $$O(n^n)$$ algorithm provided in the [script][script] tells that there is
+The *naive* $$O(n 8^n)$$ algorithm provided in the [script][script] tells that there is
 no solution for the $$4 \times 4$$ knight's tour problem.
 
 [script]: https://github.com/tsirif/optimization-auth-course/blob/master/src/knight_tour_04.py 
