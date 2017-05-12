@@ -11,7 +11,7 @@ Find the shortest Hamilton cycle on this graph.
 
 ## Solution
 
-We are going to use an exhaustive $$O(n^n)$$ algorithm implemented in this Python [script][script].
+We are going to use an exhaustive $$O(n!)$$ algorithm implemented in this Python [script][script].
 The results from this algorithm coincide with the $$O(n^2)$$ greedy approach described in the lesson.
 The shortest cycle is the path $$(4, 5, 3, 6, 1, 2)$$ and has total length of $$192$$.
 

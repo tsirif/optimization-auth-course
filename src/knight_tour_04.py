@@ -34,10 +34,10 @@ def solve(init):
         if not seqs:
             break
         new_seqs = []
-        for seq in seqs:  # * O(N**i)
+        for seq in seqs:  # * O(8**(i-1))
             next_squares = graph[seq[-1]]
-            for square in next_squares:  # * O(N)
-                if square in seq:  # * O(N)
+            for square in next_squares:  # * O(8)
+                if square in seq:  # * O(i)
                     # cannot go there, already have been
                     continue
                 new_seqs.append(seq + [square])
