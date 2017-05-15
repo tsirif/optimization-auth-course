@@ -61,15 +61,80 @@ $$\begin{align*}
                        & x_i, y_i \geq 0, \quad x_i, y_i \in \mathbb{Z} \quad \forall i \in \{1,...,7\}
 \end{align*}$$
 
-## Solution
+## Description
 
 In order to solve this problem, we are going to use a branch and cut algorithm,
-implemented in [this][script] Python script. Please find the description of this
-algorithm in its comments.
+implemented in [this][script] Python script.
 
-The solution, found by this script, is presented in the table below. The optimal value
-for this solution is **8928** and it has solved for 9 LP relaxation sub-problems, using the
-**simplex** algorithm, until it found the maximum.
+We first define variables which will hold the `best_solution` and the `opt_value`.
+Also, we initialize a queue, which will contain LP relaxation sub-problems to be
+solved, with the original problem's constraints.
+
+```python
+best_solution = None
+opt_value = -np.inf
+subproblems = deque([(A, b)])
+```
+
+We iterate over sub-problems until their queue is empty. In each iteration,
+we pop one LP relaxation sub-problem and solve it with **simplex** algorithm, using SciPy's
+[implementation][scipy-simplex].
+
+```python
+while subproblems:
+    A_parent, b_parent = subproblems.popleft()
+    res = simplex(-profit, A_parent, b_parent)
+```
+
+Then, we check whether the sub-problem has been solved successfully. If solution is
+infeasible, we proceed to the next iteration. If the upper bound for the optimal value
+of current sub-problem's branch is found to be lower or equal to our knowledge of
+the current optimal integer solution, we also proceed to the next iteration. 
+
+```python
+if -res.fun <= opt_value:
+    continue  # skip branching on this subproblem
+```
+
+We then list the indices of a solution's fractional elements, `fracts`. If there are
+no fractional elements, then we have reached a better integer solution and so we
+record it and proceed to the next sub-problem.
+
+```python
+if not fracts:
+    best_solution = res.x.astype('int')
+    opt_value = int(-res.fun)
+    continue
+```
+
+If there are indeed any fractional elements left, we choose one and create two additional
+LP relaxation problems. These two new sub-problems consist of the current
+sub-problem's constraints plus a new one. The first new constraint is for the chosen
+element's value not to be higher than the floor of the current fractional value.
+The second one is for the chosen element's value not to be lower than the ceiling of
+the current fractional value.
+
+```python
+down = np.floor(res.x[branch_i])
+constrain_1 = np.zeros((1, len(profit)))
+constrain_1[0, branch_i] = 1
+A_child_1 = np.concatenate([A_parent, constrain_1])
+b_child_1 = np.concatenate([b_parent, np.array([[down]])])
+subproblems.append((A_child_1, b_child_1))
+
+up = np.ceil(res.x[branch_i])
+constrain_2 = np.zeros((1, len(profit)))
+constrain_2[0, branch_i] = -1
+A_child_2 = np.concatenate([A_parent, constrain_2])
+b_child_2 = np.concatenate([b_parent, np.array([[-up]])])
+subproblems.append((A_child_2, b_child_2))
+```
+
+## Solution
+
+The solution is presented in the table below.
+The optimal value has been found to be **8928** and the script has solved for 9 LP relaxation
+sub-problems, using the **simplex** algorithm, until it found the maximum.
 
 | ---
 |**#Flights** | A | B | C | **#Passengers** | A | B | C
@@ -79,3 +144,4 @@ for this solution is **8928** and it has solved for 9 LP relaxation sub-problems
 | **003** | - | 13 | 1 | **003** | - | 182 | 8
 
 [script]: https://github.com/tsirif/optimization-auth-course/blob/master/src/branch_and_cut_07.py 
+[scipy-simplex]: https://docs.scipy.org/doc/scipy-0.18.1/reference/optimize.linprog-simplex.html
