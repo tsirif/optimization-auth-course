@@ -17,8 +17,8 @@ def solve_branch_cut(weights, values, max_w):
     while subproblems:
         A_parent, b_parent = subproblems.popleft()
         nodes_opened += 1
-        if nodes_opened % 5 == 0:
-            print(nodes_opened)
+        #  if nodes_opened % 5 == 0:
+        #      print(nodes_opened)
 
         # Solve relaxed subproblem
         res = simplex(-values, A_parent, b_parent)
@@ -107,9 +107,10 @@ if __name__ == "__main__":
     print()
     necessary = np.ones(len(weights), dtype='int')
     max_w -= sum(weights)
-    print("Equivalently: Maximize values * y, s.t. weights * y <= max_w, y >= 0 integer.")
+    print("Equivalently: Maximize values * y, s.t. weights * y <= max_w - sum(weights), y >= 0 integer.")
+    print("sum(weights) ==", sum(weights))
     print("Then add to the optimal solution plus 1 to each item...")
-    print("and plus sum(values) to the optimal value found.")
+    print("and plus sum(values) to the optimal value found:", sum(values))
     print()
 
     print("Solution with integer programming (branch-and-cut method).")
