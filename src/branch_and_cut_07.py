@@ -57,7 +57,7 @@ b = np.concatenate([avail_flights, np.zeros((7, 1)), -min_demand], axis=0)
 
 
 best_solution = None
-best_value = -np.inf
+opt_value = -np.inf
 subproblems = deque([(A, b)])
 nodes_opened = 0
 
@@ -78,7 +78,7 @@ while subproblems:
     res.x[np.isclose(res.x, 0)] = 0
 
     # Check if subspace's relaxed optimal value is above current best value
-    if -res.fun <= best_value:
+    if -res.fun <= opt_value:
         continue  # skip branching on this subproblem
 
     # Find basic fractional elements
@@ -89,7 +89,7 @@ while subproblems:
     # Check if solution is in integer space
     if not fracts:
         best_solution = res.x.astype('int')
-        best_value = int(-res.fun)
+        opt_value = int(-res.fun)
         continue
 
     # Select a fractional element to branch from
@@ -113,6 +113,6 @@ while subproblems:
 print("Solution:")
 print(best_solution)
 print("Optimal value:", end=' ')
-print(best_value)
+print(opt_value)
 print("Subproblems solved:", end=' ')
 print(nodes_opened)

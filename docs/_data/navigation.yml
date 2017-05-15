@@ -30,3 +30,5 @@ assignments:
     children:
       - title: "Airplane Manager: Integer Programming"
         url: /assignments/airplanes
+      - title: "Knapsack: Dynamic Programming"
+        url: /assignments/knapsack
