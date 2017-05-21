@@ -32,3 +32,7 @@ assignments:
         url: /assignments/airplanes
       - title: "Knapsack: Dynamic Programming"
         url: /assignments/knapsack
+  - title: "Lecture 5"
+    children:
+      - title: "Univariate optimization"
+        url: /assignments/minimize-2

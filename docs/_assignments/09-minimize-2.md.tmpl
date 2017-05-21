@@ -1,0 +1,180 @@
+---
+title: "Univariate optimization"
+permalink: /assignments/minimize-2
+excerpt: "Perform univariate and unimodal function optimization."
+date: 2017-05-18
+---
+
+Minimize $$f(x) = x^3 - x + 2$$ with minimizer accuracy $$0.05$$ within
+the interval $$[0,2]$$.
+
+Various algorithms, which perform univariate optimization, were implemented in this
+exercise. The methods can be found in [**optimize.py**][opti] Python script, while the
+code for experiments and visualization in [results.py][res]. True minimum is achieved
+at $$x \approx {minimum[0][0]:.4f}$$ with value $$f(x) \approx {minimum[1][0]:.4f}$$. For each
+method, we also present a demonstration with a second function.
+
+## Zeroth order methods (gradient-free)
+
+### Golden section search
+
+A function must be strictly unimodal in $$[a, b]$$, in order to be
+minimized by the golden section method. At each step, the trust interval is "cut" twice
+in golden sections and then it is contracted so that it still contains the local
+minimum. The useful property of golden ratio, $$\varphi = \frac{1 + \sqrt{5}}{2} \approx 1.618$$,
+is that an interval $$d_0$$ which is split to $$d_1 + d_2$$ by $$d_0 / d_1 =
+\varphi$$, has also $$d_1 / d_2 = \varphi$$. Consequently, the initial interval is
+contracted by a constant ratio, $$\varphi^{-1} = \varphi - 1$$, at each step and we
+can also evaluate a single new trial point at each next step (instead of two).
+
+```python
+def contract(self, a, x, y, b):  # a < x < y < b
+    d = (self.phi - 1) * (y - a)
+
+    if self.f0(x) < self.f0(y):
+        return (a, y - d, x, y)
+    else:
+        return (x, y, x + d, b)
+```
+
+{anims[GoldenSection][0]}
+
+After {results[GoldenSection][0]} iterations, it reaches $$x = {results[GoldenSection][1]:.4f}$$
+with value $$f(x) = {results[GoldenSection][2]:.4f}$$.
+
+### Fibonacci search
+
+Using fibonacci search relies on the fact that the ratio of two consecutive fibonacci
+numbers approximates $$\varphi$$. As with the golden section method, the function must
+be strictly unimodal in the initial interval, which is always contracted so that it
+contains the minimum.
+
+```python
+def contract(self, a, x, y, b):  # a < x < y < b
+    d = y - x
+
+    if self.f0(x) < self.f0(y):
+        return (a, a + d, x, y)
+    else:
+        return (x, y, b - d, b)
+```
+
+{anims[Fibonacci][0]}
+
+After {results[Fibonacci][0]} iterations, it reaches $$x = {results[Fibonacci][1]:.4f}$$
+with value $$f(x) = {results[Fibonacci][2]:.4f}$$.
+
+### Powell's parabolic interpolation
+
+At each iteration, this method fits a quadratic polynomial approximation of the
+function at points $$a < b < c$$ and replaces one of these points with its minimizing
+point. The initial triplet must be selected so that $$f(a) > f(b)$$, $$f(b) < f(c)$$,
+and a local minimum of the function lies within $$[a,c]$$, in which the function also
+is unimodal.
+
+```python
+def contract(self, a, x, y, b):  # a < x < y < b
+    x0, y0 = self.f0(x), self.f0(y)
+    if not np.isclose(x0, y0):
+        if x0 < y0:
+            z = self.minimize_parabola(a, x, y)
+            return (a, z, x, y) if z < x else (a, x, z, y)
+        else:
+            z = self.minimize_parabola(x, y, b)
+            return (x, y, z, b) if y < z else (x, z, y, b)
+    elif abs(y - a) <= self.delta:
+        return (a, x, x, y)
+    elif abs(b - x) <= self.delta:
+        return (x, y, y, b)
+    else:
+        return self.pre(a, b)  # reached symmetry? begin again
+```
+
+{anims[ParabolicInterpolation][0]}
+
+After {results[ParabolicInterpolation][0]} iterations, it reaches $$x = {results[ParabolicInterpolation][1]:.4f}$$
+with value $$f(x) = {results[ParabolicInterpolation][2]:.4f}$$.
+
+## First order methods (gradient-based)
+
+### Dichotomous search
+
+As with other methods presented, dichotomous search needs that the function is
+strictly unimodal in the initial interval, which also contains the minimum. At each
+iteration, the function's first derivative is evaluated at trust region's middle
+point and the interval is contracted properly. As a result, contraction is happening
+by the constant ratio of $$0.5$$.
+
+```python
+def contract(self, a, b):  # a < b
+    x = (a + b) / 2
+    if self.f1(x) > 0:
+        return a, x
+    else:
+        return x, b
+```
+
+{anims[Dichotomous][0]}
+
+After {results[Dichotomous][0]} iterations, it reaches $$x = {results[Dichotomous][1]:.4f}$$
+with value $$f(x) = {results[Dichotomous][2]:.4f}$$.
+
+### Davidon's cubic interpolation
+
+It fits a cubic polynomial approximation to the function that we want to
+minimize, using $$f(a), f(b), f'(a), f'(b), \quad a < b$$. Each iteration happens
+so that it is guaranteed for a local minimum to exist in such interval $$[a, b]$$. A
+local minimum must exist in the initial interval selection too.
+The minimizer of the cubic approximation lies within $$[a, b]$$ and it replaces one
+of the two boundary points as shown in the code section below.
+
+```python
+def contract(self, a, b):  # a < b
+    x = self.minimize_cubic(a, b)
+    if self.f1(x) > 0 or self.f0(x) > self.f0(a):
+        return a, x
+    else:
+        return x, b
+```
+
+{anims[CubicInterpolation][0]}
+
+After {results[CubicInterpolation][0]} iterations, it reaches $$x = {results[CubicInterpolation][1]:.4f}$$
+with value $$f(x) = {results[CubicInterpolation][2]:.4f}$$.
+
+## Second order methods: Newton's
+
+Newton's method performs descent in the steepest direction under the Hessian norm of
+the function. This can be shown to mean that, at each iteration, the unnormalized update
+consists of the negative gradient left multiplied by the inverse Hessian, or second derivative.
+It is necessary that the function is twice differentiable, in order to use this
+method. Each iteration moves the point estimation to the minimizer of the quadratic
+approximation of the function at the current point. In the code section below, there
+is also a backtracking mechanism implemented, which adapts the updated estimation,
+if a certain strong curvature condition has not been met by the Newton step alone.
+
+```python
+def iterate(self, x, lrate, eps=1e-7):
+    # eps is for numerical stability, if second derivative is close to zero
+    return x - lrate * self.f1(x) / (self.f2(x) + eps)
+
+def backtrack(self, x, xcand, c=0.99):
+    iters = 0
+    # Try to satisfy strong curvature condition
+    while abs(self.f1(xcand)) > c * abs(self.f1(x)) and iters < self.max_iters:
+        xcand = (x + xcand) / 2  # Actually it cuts learning rate in half
+        iters += 1
+    return xcand
+```
+
+{anims[Newton][0]}
+
+{anims[Newton][1]}
+
+After **{results[Newton][0]}** iterations, pure Newton method reaches at $$x = {results[Newton][1]:.4f}$$
+with value $$f(x) = {results[Newton][2]:.4f}$$. However, Newton with backtracking reaches
+faster at $$x = {results[dampedNewton][1]:.4f}$$ with value $$f(x) = {results[dampedNewton][2]:.4f}$$, after
+**{results[dampedNewton][0]}** iterations.
+
+[opti]: https://github.com/tsirif/optimization-auth-course/blob/master/src/minimize_02_9/optimize.py
+[res]: https://github.com/tsirif/optimization-auth-course/blob/master/src/minimize_02_9/results.py
