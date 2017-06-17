@@ -11,7 +11,7 @@ corresponds to the vector defined by the opposite to the function's gradient to 
 point. Candidate directions are chosen to have the same magnitude in Euclidean norm,
 $$\mathcal{L}^2$$.
 
-## Solution
+## Proof
 
 For each point $$\mathbf{x}$$, we are asking to determine the direction, $$\mathbf{u}$$, which leads to the
 maximum rate of reduction of the quantity $$F(\lambda) = f(\mathbf{x} + \lambda \mathbf{u})$$. In other
