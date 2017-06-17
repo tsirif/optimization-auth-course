@@ -36,3 +36,11 @@ assignments:
     children:
       - title: "Univariate optimization"
         url: /assignments/minimize-2
+  - title: "Lecture 6"
+    children:
+      - title: "Steepest descend for the Euclidean norm"
+        url: /assignments/steepest-euclidean
+      - title: "Orthogonality of steepest directions"
+        url: /assignments/steepest-orthogonal
+      - title: "1st & 2nd order descend methods"
+        url: /assignments/descend-minimize
