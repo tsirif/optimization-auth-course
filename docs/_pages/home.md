@@ -18,7 +18,9 @@ feature_row:
   - url: "/assignments/info"
     btn_label: "Weekly Assignments"
   - url: https://docs.google.com/presentation/d/17vGo0_TJ1grcEpWmvK5FzB8E69eNzYYlb2Epo_aFRHM/edit?usp=sharing
-    btn_label: "Bibliographical Review on No Free Lunch Theorems"
+    btn_label: "Review of No Free Lunches"
+  - url: "/extras/info"
+    btn_label: "Bonus Exercises"
 ---
 
 {% include feature_row id="intro" type="center" %}

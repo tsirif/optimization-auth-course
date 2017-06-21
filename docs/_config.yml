@@ -236,6 +236,9 @@ collections:
   assignments:
     output: True
     permalink: /:collection/:path/
+  extras:
+    output: True
+    permalink: /:collection/:path/
 
 
 # Defaults
@@ -260,3 +263,16 @@ defaults:
       mathjax: true
       sidebar:
         nav: "assignments"
+  - scope:
+      path: ""
+      type: extras
+    values:
+      layout: single
+      read_time: false
+      author_profile: false
+      share: false
+      comments: false
+      # mathjax_local: true
+      mathjax: true
+      sidebar:
+        nav: "extras"
