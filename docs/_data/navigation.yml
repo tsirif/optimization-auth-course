@@ -4,6 +4,10 @@ main:
     url: /about/
   - title: "Weekly Assignments"
     url: /assignments/info
+  - title: "No Free Lunches"
+    url: https://docs.google.com/presentation/d/17vGo0_TJ1grcEpWmvK5FzB8E69eNzYYlb2Epo_aFRHM/edit?usp=sharing
+  - title: "Extras"
+    url: /extras/info
 
 assignments:
   - title: "Information"
@@ -44,3 +48,19 @@ assignments:
         url: /assignments/steepest-orthogonal
       - title: "1st & 2nd order descend methods"
         url: /assignments/descend-minimize
+
+extras:
+  - title: "Information"
+    url: /extras/info
+  - title: "Exercise 1"
+    url: /extras/exercise1
+  - title: "Exercise 2"
+    url: /extras/exercise2
+  - title: "Exercise 3"
+    url: /extras/exercise3
+  - title: "Exercise 4"
+    url: /extras/exercise4
+  - title: "Exercise 5"
+    url: /extras/exercise5
+  - title: "Exercise 6"
+    url: /extras/exercise6
